@@ -1,7 +1,7 @@
 import os
 import pathlib
 import platform
-import speech_recognition 
+import speech_recognition
 
 speech = speech_recognition.Recognizer()
 print('Listening')
