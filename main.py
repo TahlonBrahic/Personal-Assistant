@@ -54,7 +54,7 @@ def listen_with_whisper():
                 print(f'You just said: {spoken_text}')
 
                 parsed_text = parse_text(spoken_text)
-                control_flow(parsed_text)
+                listening = control_flow(parsed_text)
 
             except sr.UnknownValueError:
                 print("Sorry, I did not understand that.")
@@ -74,12 +74,14 @@ def control_flow(parsed_array: list):
     # This function parses the parsed text and searches for keywords. If it detects keywords then it runs a function
     for word in parsed_array:
         
-        if word == 'stop':
-            print('No longer listening')
-            break
-
+        if word in ['stop', 'stop.', 'Stop.']:
+            print('Exiting program')
+            return False # Stop listening
+            
         # For example if it detects time in the parsed array it could prompt a time control flow function
         if word == 'time':
             print(time.time())
+    
+    return True
 
 listen_with_whisper()       
