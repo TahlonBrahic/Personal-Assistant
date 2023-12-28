@@ -5,7 +5,7 @@ import whisper
 import speech_recognition as sr
 
 # local path 'C:\Users\tahlo\Documents\Programming\Personal-Assistant'
-# virtual env path 'C:\Users\tahlo\Documents\Programming\Personal-Assistant\virtual-assistant-virtualenv\Scripts'
+# virtual env path 'C:\Users\tahlo\Documents\Programming\Personal-Assistant\pavenv\Scripts'
 # start virtual environemnt: source activate
 # venv interpreter C:\Users\tahlo\Documents\Programming\Personal-Assistant\pavenv\Scripts\python.exe
 
