@@ -54,4 +54,8 @@ tqdm==4.66.1
 traitlets==5.14.0
 typing_extensions==4.9.0
 urllib3==2.1.0
+<<<<<<< HEAD
 wcwidth==0.2.12
+=======
+wcwidth==0.2.12
+>>>>>>> 8116a79d8fef3ae6bed26825f5225d75e48ac2d6
