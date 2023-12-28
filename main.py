@@ -30,4 +30,20 @@ def listen_with_sphinx():
         except sr.RequestError as e:
             print(f"Could not request results; {e}")
 
-listen_with_sphinx()
+# This function listens to one audio inputs with open ai's whisper model which has much better performance.
+def listen_with_whisper():
+    speech = sr.Recognizer()
+    print('Listening')
+
+    with sr.Microphone as source:
+        speech.adjust_for_ambient_noise(source)
+        audio = speech.listen(source)
+        model = whisper.load_model('base.en')
+
+        try:
+            spoken_text = speech.recognize_whisper(audio, model=model)
+            print(f'You just said: {spoken_text}')
+        except sr.UnknownValueError:
+            print("Sorry, I did not understand that.")
+        except sr.RequestError as e:
+            print(f"Could not request results; {e}")
