@@ -18,41 +18,48 @@ import speech_recognition as sr
 # This function listens to one audio input with the sphinx model. 
 def listen_with_sphinx():
     speech = sr.Recognizer()
+    listening = True
     print('Listening')
+    
+    while listening:
+        with sr.Microphone() as source:
+            speech.adjust_for_ambient_noise(source)
+            audio = speech.listen(source)
 
-    with sr.Microphone() as source:
-        speech.adjust_for_ambient_noise(source)
-        audio = speech.listen(source)
+            try:
+                spoken_text = speech.recognize_sphinx(audio)
+                print(f'You just said: {spoken_text}')
 
-        try:
-            spoken_text = speech.recognize_sphinx(audio)
-            print(f'You just said: {spoken_text}')
-        except sr.UnknownValueError:
-            print("Sorry, I did not understand that.")
-        except sr.RequestError as e:
-            print(f"Could not request results; {e}")
+                if spoken_text == 'stop':
+                    break
+            except sr.UnknownValueError:
+                print("Sorry, I did not understand that.")
+            except sr.RequestError as e:
+                print(f"Could not request results; {e}")
 
 # This function listens to one audio inputs with open ai's whisper model which has much better performance.
 def listen_with_whisper():
     speech = sr.Recognizer()
+    listening = True
     print('Listening')
 
-    with sr.Microphone() as source:
-        speech.adjust_for_ambient_noise(source)
-        audio = speech.listen(source)
-        model = whisper.load_model('base.en') # Right now the model uses the base training set, I do not understand the API well enough to implement the others just yet
+    while listening:
+        with sr.Microphone() as source:
+            speech.adjust_for_ambient_noise(source)
+            audio = speech.listen(source)
+            model = whisper.load_model('base.en') # Right now the model uses the base training set, I do not understand the API well enough to implement the others just yet
 
-        try:
-            spoken_text = speech.recognize_whisper(audio)
-            print(f'You just said: {spoken_text}')
+            try:
+                spoken_text = speech.recognize_whisper(audio)
+                print(f'You just said: {spoken_text}')
 
-            parsed_text = parse_text(spoken_text)
-            control_flow(parsed_text)
+                parsed_text = parse_text(spoken_text)
+                control_flow(parsed_text)
 
-        except sr.UnknownValueError:
-            print("Sorry, I did not understand that.")
-        except sr.RequestError as e:
-            print(f"Could not request results; {e}")
+            except sr.UnknownValueError:
+                print("Sorry, I did not understand that.")
+            except sr.RequestError as e:
+                print(f"Could not request results; {e}")
 
 # Control Flow
 def parse_text(text: str) -> list:
@@ -67,6 +74,10 @@ def control_flow(parsed_array: list):
     # This function parses the parsed text and searches for keywords. If it detects keywords then it runs a function
     for word in parsed_array:
         
+        if word == 'stop':
+            print('No longer listening')
+            break
+
         # For example if it detects time in the parsed array it could prompt a time control flow function
         if word == 'time':
             print(time.time())
