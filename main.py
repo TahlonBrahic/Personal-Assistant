@@ -3,8 +3,12 @@ import sys
 import time
 import pathlib
 import platform
+import webbrowser
 import whisper
 import speech_recognition as sr
+
+# Local file imports
+import lists
 
 # local path 'C:\Users\tahlo\Documents\Programming\Personal-Assistant'
 # virtual env path 'C:\Users\tahlo\Documents\Programming\Personal-Assistant\pavenv\Scripts'
@@ -81,6 +85,8 @@ def control_flow(parsed_array: list):
         # For example if it detects time in the parsed array it could prompt a time control flow function
         if word == 'time':
             print(time.time())
+
+        if word == 'web'
     
     return True
 
