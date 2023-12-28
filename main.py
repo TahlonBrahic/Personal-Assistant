@@ -4,6 +4,9 @@ import platform
 import whisper
 import speech_recognition
 
+# local path 'C:\Users\tahlo\Documents\Programming\Personal-Assistant'
+# virtual env path 'C:\Users\tahlo\Documents\Programming\Personal-Assistant\virtual-assistant-virtualenv\Scripts'
+
 # Load model
 whisper = whisper.load_model('medium.en')
 
