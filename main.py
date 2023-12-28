@@ -84,4 +84,5 @@ def control_flow(parsed_array: list):
     
     return True
 
-listen_with_whisper()       
+if __name__ == '__main__':
+    listen_with_whisper()       
