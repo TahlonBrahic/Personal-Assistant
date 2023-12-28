@@ -6,6 +6,7 @@ import speech_recognition as sr
 
 # local path 'C:\Users\tahlo\Documents\Programming\Personal-Assistant'
 # virtual env path 'C:\Users\tahlo\Documents\Programming\Personal-Assistant\virtual-assistant-virtualenv\Scripts'
+# start virtual environemnt: source activate
 # venv interpreter C:\Users\tahlo\Documents\Programming\Personal-Assistant\pavenv\Scripts\python.exe
 
 # INCLUDE ENVIRONMENT VARIABLE: 'C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.38.33130\include'
