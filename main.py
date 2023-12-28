@@ -86,7 +86,8 @@ def control_flow(parsed_array: list):
         if word == 'time':
             print(time.time())
 
-        if word == 'web'
+        if word == 'web':
+            pass
     
     return True
 
