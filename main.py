@@ -1,4 +1,6 @@
 import os
+import sys
+import time
 import pathlib
 import platform
 import whisper
@@ -43,13 +45,17 @@ def listen_with_whisper():
         try:
             spoken_text = speech.recognize_whisper(audio)
             print(f'You just said: {spoken_text}')
+
+            parsed_text = parse_text(spoken_text)
+            control_flow(parsed_text)
+
         except sr.UnknownValueError:
             print("Sorry, I did not understand that.")
         except sr.RequestError as e:
             print(f"Could not request results; {e}")
 
 # Control Flow
-def parse_text(text: str):
+def parse_text(text: str) -> list:
 
     # I am going to divide the text into an array and parse each substring for keywords.
 
@@ -59,9 +65,10 @@ def parse_text(text: str):
 def control_flow(parsed_array: list):
 
     # This function parses the parsed text and searches for keywords. If it detects keywords then it runs a function
-
-    for string in list:
+    for word in parsed_array:
         
         # For example if it detects time in the parsed array it could prompt a time control flow function
-        if string == 'time':
-            pass
+        if word == 'time':
+            print(time.time())
+
+listen_with_whisper()       
