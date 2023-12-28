@@ -35,13 +35,13 @@ def listen_with_whisper():
     speech = sr.Recognizer()
     print('Listening')
 
-    with sr.Microphone as source:
+    with sr.Microphone() as source:
         speech.adjust_for_ambient_noise(source)
         audio = speech.listen(source)
-        model = whisper.load_model('base.en')
+        model = whisper.load_model('base.en') # Right now the model uses the base training set, I do not understand the API well enough to implement the others just yet
 
         try:
-            spoken_text = speech.recognize_whisper(audio, model=model)
+            spoken_text = speech.recognize_whisper(audio)
             print(f'You just said: {spoken_text}')
         except sr.UnknownValueError:
             print("Sorry, I did not understand that.")
