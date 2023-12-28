@@ -47,3 +47,21 @@ def listen_with_whisper():
             print("Sorry, I did not understand that.")
         except sr.RequestError as e:
             print(f"Could not request results; {e}")
+
+# Control Flow
+def parse_text(text: str):
+
+    # I am going to divide the text into an array and parse each substring for keywords.
+
+    text_to_array = text.split(' ')
+    return text_to_array
+
+def control_flow(parsed_array: list):
+
+    # This function parses the parsed text and searches for keywords. If it detects keywords then it runs a function
+
+    for string in list:
+        
+        # For example if it detects time in the parsed array it could prompt a time control flow function
+        if string == 'time':
+            pass
