@@ -78,7 +78,6 @@ def control_flow(parsed_array: list):
 
     # This function parses the parsed text and searches for keywords. If it detects keywords then it runs a function
     for word in parsed_array:
-        
         if word in lists.stop_list:
             print('Exiting program')
             return False # Stop listening
@@ -87,11 +86,11 @@ def control_flow(parsed_array: list):
         if word == 'time':
             print(time.time())
 
-        if word == lists.web_list:
+        if word in lists.web_list:
             print('Opening the following website:')
             webbrowser.open('https://' + 'youtube' + '.com')
     
     return True
 
 if __name__ == '__main__':
-    print(lists.web_list)
+    listen_with_whisper()
