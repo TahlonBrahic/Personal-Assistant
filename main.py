@@ -11,7 +11,6 @@ import speech_recognition as sr
 sys.path.append('C:/Users/tahlo/Documents/Programming/Personal-Assistant')
 import lists
 
-
 # local path 'C:\Users\tahlo\Documents\Programming\Personal-Assistant'
 # virtual env path 'C:\Users\tahlo\Documents\Programming\Personal-Assistant\pavenv\Scripts'
 # start virtual environemnt: source activate
@@ -89,9 +88,10 @@ def control_flow(parsed_array: list):
             print(time.time())
 
         if word == lists.web_list:
-            pass
+            print('Opening the following website:')
+            webbrowser.open('https://' + 'youtube' + '.com')
     
     return True
 
 if __name__ == '__main__':
-    listen_with_whisper()   
+    print(lists.stop_list)
