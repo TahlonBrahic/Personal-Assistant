@@ -8,6 +8,7 @@ import whisper
 import speech_recognition as sr
 
 # Local file imports
+sys.path.append('C:/Users/tahlo/Documents/Programming/Personal-Assistant')
 import lists
 
 # local path 'C:\Users\tahlo\Documents\Programming\Personal-Assistant'
@@ -78,7 +79,7 @@ def control_flow(parsed_array: list):
     # This function parses the parsed text and searches for keywords. If it detects keywords then it runs a function
     for word in parsed_array:
         
-        if word in ['stop', 'stop.', 'Stop.']:
+        if word in lists.stop_list:
             print('Exiting program')
             return False # Stop listening
             
@@ -86,10 +87,11 @@ def control_flow(parsed_array: list):
         if word == 'time':
             print(time.time())
 
-        if word == 'web':
-            pass
+        if word == lists.web_list:
+            print('Opening the following website:')
+            webbrowser.open('https://' + 'youtube' + '.com')
     
     return True
 
 if __name__ == '__main__':
-    listen_with_whisper()       
+    print(lists.stop_list)
