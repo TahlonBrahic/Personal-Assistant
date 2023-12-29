@@ -94,4 +94,4 @@ def control_flow(parsed_array: list):
     return True
 
 if __name__ == '__main__':
-    print(lists.stop_list)
+    print(lists.web_list)
