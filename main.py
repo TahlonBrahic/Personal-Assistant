@@ -98,4 +98,4 @@ def control_flow(parsed_array: list):
 
 if __name__ == '__main__':
     gui.display()
-    # listen_with_whisper()
+    listen_with_whisper()
