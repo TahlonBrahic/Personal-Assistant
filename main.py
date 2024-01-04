@@ -67,6 +67,7 @@ def listen_with_whisper():
             except sr.RequestError as e:
                 print(f"Could not request results; {e}")
 
+
 # Control Flow
 def parse_text(text: str) -> list:
 
@@ -86,6 +87,7 @@ def control_flow(parsed_array: list):
         # For example if it detects time in the parsed array it could prompt a time control flow function
         if word == 'time':
             print(time.time())
+            gui_input = f'Your time is {time.localtime()}.'
 
         if word in lists.web_list:
             print('Opening the following website:')
