@@ -3,7 +3,6 @@ import sys
 import time
 import pathlib
 import platform
-import tkinter as tk
 import webbrowser
 import whisper
 import speech_recognition as sr
@@ -11,6 +10,7 @@ import speech_recognition as sr
 # Local file imports
 sys.path.append('C:/Users/tahlo/Documents/Programming/Personal-Assistant')
 import lists
+import gui
 
 # local path 'C:\Users\tahlo\Documents\Programming\Personal-Assistant'
 # virtual env path 'C:\Users\tahlo\Documents\Programming\Personal-Assistant\pavenv\Scripts'
@@ -95,4 +95,6 @@ def control_flow(parsed_array: list):
     return True
 
 if __name__ == '__main__':
-    listen_with_whisper()
+    gui.display()
+    # listen_with_whisper()
+    
