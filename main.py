@@ -3,6 +3,7 @@ import sys
 import time
 import pathlib
 import platform
+import tkinter as tk
 import webbrowser
 import whisper
 import speech_recognition as sr
@@ -89,6 +90,7 @@ def control_flow(parsed_array: list):
         if word in lists.web_list:
             print('Opening the following website:')
             webbrowser.open('https://' + 'youtube' + '.com')
+
     
     return True
 
