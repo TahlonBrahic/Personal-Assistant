@@ -35,7 +35,7 @@ class SpeechRecognizer(QThread):
         self.model = model
         self.speech = sr.Recognizer()
 
-    def listen(self):
+    def run(self):
         # Implement listening logic using self.model
         listening = True
         while listening:
@@ -96,7 +96,7 @@ class PersonalAssistant:
 
     def start(self):
         self.gui.display()
-        self.recognizer.listen()
+        self.recognizer.start()
         
 
 if __name__ == '__main__':
