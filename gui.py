@@ -4,7 +4,7 @@ from PyQt5.QtCore import Qt
 class GUI(QMainWindow):
     def __init__(self, label_text='Listening...', height=400):
         super().__init__()
-        self.label_text = label_text
+        self.label = label_text
 
         self.setWindowTitle("Voice Assistant")
         self.setGeometry(100, 100, 800, 600)
@@ -21,7 +21,7 @@ class GUI(QMainWindow):
 
         # Create a Layout and Label, centers the label
         layout = QVBoxLayout()
-        label = QLabel(self.label_text, centralWidget)
+        label = QLabel(self.label, centralWidget)
         label.setAlignment(Qt.AlignCenter)
 
         # Add widget to label and set layout of central widget
@@ -35,7 +35,7 @@ class GUI(QMainWindow):
         self.move(qr.topLeft())
 
     def inputSpeechWidget(self):
-        self.label = QLabel(self.label_text)
+        self.label = QLabel(self)
         self.label.resize(120, 80)
 
     def display(self):
