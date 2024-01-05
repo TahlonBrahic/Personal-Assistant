@@ -5,6 +5,8 @@ class GUI(QMainWindow):
         super().__init__()
         self.setWindowTitle("Voice Assistant")
         self.setFixedHeight(height)
+
+        # Label information
         self.label = QLabel(label_text)
         self.label.resize(120, 80)
 
