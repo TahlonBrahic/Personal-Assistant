@@ -8,6 +8,7 @@ class GUI(QMainWindow):
         self.setFixedHeight(height)
 
     def display(self):
+        self.label.show()
         self.show()
 
     def update_text(self, text):
