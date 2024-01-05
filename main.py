@@ -30,6 +30,7 @@ class SpeechRecognizer:
 
     def listen(self):
         # Implement listening logic using self.model
+        listening = True
         while listening:
             with sr.Microphone() as source:
                 self.speech.adjust_for_ambient_noise(source)
@@ -84,4 +85,4 @@ class PersonalAssistant:
 
 if __name__ == '__main__':
     assistant = PersonalAssistant()
-    PersonalAssistant.start()
+    assistant.start()
