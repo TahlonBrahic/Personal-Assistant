@@ -6,10 +6,10 @@ class GUI(QMainWindow):
         super().__init__()
         self.label_text = label_text
 
+        # These could be moved to an initalize GUI method
         self.setWindowTitle("Voice Assistant")
         self.setGeometry(100, 100, 800, 600)
         self.centerWindow()
-
         self.createCentralWidget()
 
     # This creates the central widget and adds the label that reads the input text.
@@ -21,11 +21,11 @@ class GUI(QMainWindow):
 
         # Create a Layout and Label, centers the label
         layout = QVBoxLayout()
-        label = QLabel(self.label_text, centralWidget)
-        label.setAlignment(Qt.AlignCenter)
+        self.label = QLabel(self.label_text, centralWidget)
+        self.label.setAlignment(Qt.AlignCenter)
 
         # Add widget to label and set layout of central widget
-        layout.addWidget(label)
+        layout.addWidget(self.label)
         centralWidget.setLayout(layout)
 
     def centerWindow(self):
