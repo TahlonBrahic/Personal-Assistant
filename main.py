@@ -100,7 +100,7 @@ class PersonalAssistant:
         
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    assistant = PersonalAssistant()
-    assistant.start()
-    sys.exit(app.exec_())  # Start the event loop
+    app = QApplication(sys.argv) # Create instance of a QApplication
+    assistant = PersonalAssistant() # Create instance of a PersonalAssistant
+    assistant.start() # Start the voice assistant
+    sys.exit(app.exec_())  # Start the voice assistant GUI
