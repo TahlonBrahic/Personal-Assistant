@@ -46,10 +46,11 @@ class SpeechRecognizer(QThread):
                 audio = self.speech.listen(source)
                 
                 try:
-                    spoken_text = self.speech.recognize_whisper(audio)
-                    print(f'You just said: {spoken_text}')
+                    recognized_text = self.speech.recognize_whisper(audio)
+                    self.recognized_signal.emit(recognized_text)
+                    print(f'You just said: {recognized_text}')
 
-                    parsed_text = self.parse_text(spoken_text)
+                    parsed_text = self.parse_text(recognized_text)
                     listening = self.recognize(parsed_text)
 
                 except sr.UnknownValueError:
