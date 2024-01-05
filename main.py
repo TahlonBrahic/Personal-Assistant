@@ -3,9 +3,13 @@ import sys
 import time
 import pathlib
 import platform
+
 import webbrowser
 import whisper
 import speech_recognition as sr
+
+from PyQt5.QtCore import QThread, pyqtSignal
+from PyQt5.QtWidgets import QApplication
 
 # Local file imports
 sys.path.append('C:/Users/tahlo/Documents/Programming/Personal-Assistant')
@@ -23,8 +27,11 @@ import gui
 # LIB ENVIRONMENT VARIABLE: 'C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.38.33130\lib\x64'
 # PATH ENVIRONMENT VARIABLE: 'C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.38.33130\bin\Hostx64\x64'
 
-class SpeechRecognizer:
+class SpeechRecognizer(QThread):
+    recognized_signal = pyqtSignal(str)  # Signal to emit recognized text
+
     def __init__(self, model):
+        super().__init__()
         self.model = model
         self.speech = sr.Recognizer()
 
@@ -81,10 +88,18 @@ class PersonalAssistant:
         self.recognizer = SpeechRecognizer(model=model)
         self.gui = gui.GUI()
 
+    def on_recognized(self, text):
+        # Update GUI with recognized text
+        self.gui.update_text(text)  # Ensure GUI has a method to update text
+
     def start(self):
+        self.recognizer.recognized_signal.connect(self.on_recognized)
+        self.gui.display()
         self.recognizer.listen()
         
 
 if __name__ == '__main__':
+    app = QApplication(sys.argv)
     assistant = PersonalAssistant()
     assistant.start()
+    sys.exit(app.exec_())  # Start the event loop
