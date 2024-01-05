@@ -12,6 +12,8 @@ sys.path.append('C:/Users/tahlo/Documents/Programming/Personal-Assistant')
 import lists
 import gui
 
+# The following section provides information for me on important locations to run the application from source code.
+
 # local path 'C:\Users\tahlo\Documents\Programming\Personal-Assistant'
 # virtual env path 'C:\Users\tahlo\Documents\Programming\Personal-Assistant\pavenv\Scripts'
 # start virtual environemnt: source activate
@@ -21,81 +23,65 @@ import gui
 # LIB ENVIRONMENT VARIABLE: 'C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.38.33130\lib\x64'
 # PATH ENVIRONMENT VARIABLE: 'C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.38.33130\bin\Hostx64\x64'
 
-# This function listens to one audio input with the sphinx model. 
-def listen_with_sphinx():
-    speech = sr.Recognizer()
-    listening = True
-    print('Listening')
-    
-    while listening:
-        with sr.Microphone() as source:
-            speech.adjust_for_ambient_noise(source)
-            audio = speech.listen(source)
+class SpeechRecognizer:
+    def __init__(self, model):
+        self.model = model
+        self.speech = sr.Recognizer()
 
-            try:
-                spoken_text = speech.recognize_sphinx(audio)
-                print(f'You just said: {spoken_text}')
+    def listen(self):
+        # Implement listening logic using self.model
+        while listening:
+            with sr.Microphone() as source:
+                self.speech.adjust_for_ambient_noise(source)
+                audio = self.speech.listen(source)
+                model = whisper.load_model('base.en') # Right now the model uses the base training set, I do not understand the API well enough to implement the others just yet
 
-                if spoken_text == 'stop':
-                    break
-            except sr.UnknownValueError:
-                print("Sorry, I did not understand that.")
-            except sr.RequestError as e:
-                print(f"Could not request results; {e}")
+                try:
+                    spoken_text = self.speech.recognize_whisper(audio)
+                    print(f'You just said: {spoken_text}')
 
-# This function listens to one audio inputs with open ai's whisper model which has much better performance.
-def listen_with_whisper():
-    speech = sr.Recognizer()
-    listening = True
-    print('Listening')
+                    parsed_text = self.parse_text(spoken_text)
+                    listening = self.recognize(parsed_text)
 
-    while listening:
-        with sr.Microphone() as source:
-            speech.adjust_for_ambient_noise(source)
-            audio = speech.listen(source)
-            model = whisper.load_model('base.en') # Right now the model uses the base training set, I do not understand the API well enough to implement the others just yet
+                except sr.UnknownValueError:
+                    print("Sorry, I did not understand that.")
+                except sr.RequestError as e:
+                    print(f"Could not request results; {e}")
 
-            try:
-                spoken_text = speech.recognize_whisper(audio)
-                print(f'You just said: {spoken_text}')
+    def parse_text(self, text: str) -> list:
 
-                parsed_text = parse_text(spoken_text)
-                listening = control_flow(parsed_text)
+        # I am going to divide the text into an array and parse each substring for keywords.
 
-            except sr.UnknownValueError:
-                print("Sorry, I did not understand that.")
-            except sr.RequestError as e:
-                print(f"Could not request results; {e}")
+        text_to_array = text.split(' ')
+        return text_to_array
 
+    def recognize(self, parsed_array: list):
+        # Implement recognition logic based on self.model
+        # This function parses the parsed text and searches for keywords. If it detects keywords then it runs a function
+        for word in parsed_array:
+            if word in lists.stop_list:
+                print('Exiting program')
+                return False # Stop listening
+                
+            # For example if it detects time in the parsed array it could prompt a time control flow function
+            if word == 'time':
+                print(time.time())
+                gui_input = f'Your time is {time.localtime()}.'
 
-# Control Flow
-def parse_text(text: str) -> list:
+            if word in lists.web_list:
+                print('Opening the following website:')
+                webbrowser.open('https://' + 'youtube' + '.com')
 
-    # I am going to divide the text into an array and parse each substring for keywords.
+        return True # This keeps the listen method running
 
-    text_to_array = text.split(' ')
-    return text_to_array
+class PersonalAssistant:
+    def __init__(self, model='whisper'):
+        self.recognizer = SpeechRecognizer(model=model)
 
-def control_flow(parsed_array: list):
-
-    # This function parses the parsed text and searches for keywords. If it detects keywords then it runs a function
-    for word in parsed_array:
-        if word in lists.stop_list:
-            print('Exiting program')
-            return False # Stop listening
-            
-        # For example if it detects time in the parsed array it could prompt a time control flow function
-        if word == 'time':
-            print(time.time())
-            gui_input = f'Your time is {time.localtime()}.'
-
-        if word in lists.web_list:
-            print('Opening the following website:')
-            webbrowser.open('https://' + 'youtube' + '.com')
-
-    
-    return True
+    def start(self):
+        self.recognizer.listen()
+        
 
 if __name__ == '__main__':
-    gui.display()
-    listen_with_whisper()
+    assistant = PersonalAssistant()
+    PersonalAssistant.start()
