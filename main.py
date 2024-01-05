@@ -32,6 +32,8 @@ class SpeechRecognizer:
         # Implement listening logic using self.model
         listening = True
         while listening:
+            print('Listening...')
+        
             with sr.Microphone() as source:
                 self.speech.adjust_for_ambient_noise(source)
                 audio = self.speech.listen(source)
