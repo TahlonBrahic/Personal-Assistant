@@ -37,8 +37,7 @@ class SpeechRecognizer:
             with sr.Microphone() as source:
                 self.speech.adjust_for_ambient_noise(source)
                 audio = self.speech.listen(source)
-                model = whisper.load_model('base.en') # Right now the model uses the base training set, I do not understand the API well enough to implement the others just yet
-
+                
                 try:
                     spoken_text = self.speech.recognize_whisper(audio)
                     print(f'You just said: {spoken_text}')
