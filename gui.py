@@ -13,5 +13,5 @@ class GUI(QMainWindow):
     def display(self):
         self.show()
 
-    def update_text(self, text):
+    def update_text(self, text: str):
          self.label.setText(text)  # Update text of the existing label
