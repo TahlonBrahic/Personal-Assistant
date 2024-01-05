@@ -79,6 +79,7 @@ class SpeechRecognizer:
 class PersonalAssistant:
     def __init__(self, model='whisper'):
         self.recognizer = SpeechRecognizer(model=model)
+        self.gui = gui.GUI()
 
     def start(self):
         self.recognizer.listen()
