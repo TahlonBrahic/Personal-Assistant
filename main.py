@@ -72,7 +72,7 @@ class SpeechRecognizer(QThread):
                 return False # Stop listening
                 
             # For example if it detects time in the parsed array it could prompt a time control flow function
-            if word == 'time':
+            if word in lists.time_list:
                 print(time.time())
                 gui_input = f'Your time is {time.localtime()}.'
 

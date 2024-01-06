@@ -5,7 +5,7 @@ Some of this information includes lists of strings that include keywords.
 
 stop_list = ['stop', 'stop.', 'Stop.', 'bye']
 
-time_list = []
+time_list = ["time", "Time", "TIME", "ti-me", "Ti-me", "TI-ME", "time ", " time", " time "]
 
 web_list = ['web', 'website', 'Web', 'Website', 'web.', 'website.']
 
