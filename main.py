@@ -1,7 +1,7 @@
 import os
 import sys
 import time
-import datetime
+from datetime import datetime
 import pathlib
 import platform
 
