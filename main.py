@@ -15,6 +15,7 @@ from PyQt5.QtWidgets import QApplication
 sys.path.append('C:/Users/tahlo/Documents/Programming/Personal-Assistant')
 import lists
 import gui
+import tts
 
 # The following section provides information for me on important locations to run the application from source code.
 
@@ -80,6 +81,7 @@ class SpeechRecognizer(QThread):
             if word in lists.web_list:
                 if word in lists.youtube_list:
                     print('Opening the following website:')
+                    self.tts.say('I am opening youtube.com for you.')
                     webbrowser.open('https://' + 'youtube' + '.com')
 
         return True # This keeps the listen method running
