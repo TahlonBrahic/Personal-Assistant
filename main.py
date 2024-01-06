@@ -1,6 +1,7 @@
 import os
 import sys
 import time
+import datetime
 import pathlib
 import platform
 
@@ -76,8 +77,8 @@ class SpeechRecognizer(QThread):
                 
             # For example if it detects time in the parsed array it could prompt a time control flow function
             if word in lists.time_list:
-                print(time.time())
-                self.tts.say(f'Your time is {time.localtime()}.')
+                print(datetime.now().strftime("%H:%M:%S"))
+                self.tts.say(f'Your time is {datetime.now().strftime("%H:%M:%S")}.')
 
             if word in lists.web_list:
                 if word in lists.youtube_list:
