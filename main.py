@@ -36,6 +36,7 @@ class SpeechRecognizer(QThread):
         self.model = model
         self.speech = sr.Recognizer()
         self.os = platform.system()
+        self.tts = tts.Speaker()
 
     def run(self):
         # Implement listening logic using self.model
