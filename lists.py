@@ -8,3 +8,5 @@ stop_list = ['stop', 'stop.', 'Stop.', 'bye']
 time_list = []
 
 web_list = ['web', 'website', 'Web', 'Website', 'web.', 'website.']
+
+youtube_list = ["YouTube", "youtube", "YOUTUBE", "Youtube", "youTube", "YOUTube", "You Tube", "you tube", "YOU TUBE"]

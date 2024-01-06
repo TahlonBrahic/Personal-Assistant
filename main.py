@@ -59,9 +59,7 @@ class SpeechRecognizer(QThread):
                     print(f"Could not request results; {e}")
 
     def parse_text(self, text: str) -> list:
-
         # I am going to divide the text into an array and parse each substring for keywords.
-
         text_to_array = text.split(' ')
         return text_to_array
 
@@ -79,8 +77,9 @@ class SpeechRecognizer(QThread):
                 gui_input = f'Your time is {time.localtime()}.'
 
             if word in lists.web_list:
-                print('Opening the following website:')
-                webbrowser.open('https://' + 'youtube' + '.com')
+                if word in lists.youtube_list:
+                    print('Opening the following website:')
+                    webbrowser.open('https://' + 'youtube' + '.com')
 
         return True # This keeps the listen method running
 
