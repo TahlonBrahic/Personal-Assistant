@@ -1,4 +1,5 @@
 from gui import GUI
+from speech_recognizer import SpeechRecognizer
 
 class PersonalAssistant:
     def __init__(self, model='whisper'):
