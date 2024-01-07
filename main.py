@@ -11,6 +11,7 @@ import speech_recognition as sr
 sys.path.append('C:/Users/tahlo/Documents/Programming/Personal-Assistant')
 import lists
 import gui
+import SpeechRecognizer from speech_recognizer
 
 # The following section provides information for me on important locations to run the application from source code.
 
@@ -22,10 +23,6 @@ import gui
 # INCLUDE ENVIRONMENT VARIABLE: 'C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.38.33130\include'
 # LIB ENVIRONMENT VARIABLE: 'C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.38.33130\lib\x64'
 # PATH ENVIRONMENT VARIABLE: 'C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.38.33130\bin\Hostx64\x64'
-
-
-
-
 
 class PersonalAssistant:
     def __init__(self, model='whisper'):
