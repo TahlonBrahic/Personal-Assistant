@@ -9,6 +9,8 @@ from PyQt5.QtCore import QThread, pyqtSignal
 from PyQt5.QtWidgets import QApplication
 
 import tts
+import lists
+import speech_recognition as sr
 
 class SpeechRecognizer(QThread):
     recognized_signal = pyqtSignal(str)  # Signal to emit recognized text

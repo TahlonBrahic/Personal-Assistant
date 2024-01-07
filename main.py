@@ -12,7 +12,6 @@ sys.path.append('C:/Users/tahlo/Documents/Programming/Personal-Assistant')
 import lists
 import gui
 
-
 # The following section provides information for me on important locations to run the application from source code.
 
 # local path 'C:\Users\tahlo\Documents\Programming\Personal-Assistant'
