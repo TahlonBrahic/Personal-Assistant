@@ -3,15 +3,16 @@ import sys
 import time
 import pathlib
 
-import whisper
 import speech_recognition as sr
+from PyQt5.QtWidgets import QApplication
+
 
 
 # Local file imports
 sys.path.append('C:/Users/tahlo/Documents/Programming/Personal-Assistant')
 import lists
 import gui
-import SpeechRecognizer from speech_recognizer
+from speech_recognizer import SpeechRecognizer
 
 # The following section provides information for me on important locations to run the application from source code.
 

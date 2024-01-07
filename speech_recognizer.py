@@ -6,7 +6,6 @@ import pathlib
 import whisper
 
 from PyQt5.QtCore import QThread, pyqtSignal
-from PyQt5.QtWidgets import QApplication
 
 import tts
 import lists
