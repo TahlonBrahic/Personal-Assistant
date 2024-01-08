@@ -1,7 +1,5 @@
 import sys
 from PyQt5.QtWidgets import QApplication
-
-# Local file imports
 from personal_assistant import PersonalAssistant
 
 def main():
