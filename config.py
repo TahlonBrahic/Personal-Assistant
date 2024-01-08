@@ -5,7 +5,8 @@
 # virtual env path 'C:\Users\\tahlo\Documents\Programming\Personal-Assistant\pavenv\Scripts'
 # start virtual environemnt: source activate
 # venv interpreter C:\Users\\tahlo\Documents\Programming\Personal-Assistant\pavenv\Scripts\python.exe
-
+# $env:PYTHONPATH += "C:\Users\tahlo\Documents\Programming\Personal-Assistant"
+# export PYTHONPATH="$PYTHONPATH:/c/Users/tahlo/Documents/Programming/Personal-Assistant"
 # INCLUDE ENVIRONMENT VARIABLE: 'C:\Program Files (x86)\Microsoft Visual Studio\\2022\BuildTools\VC\Tools\MSVC\\14.38.33130\include'
 # LIB ENVIRONMENT VARIABLE: 'C:\Program Files (x86)\Microsoft Visual Studio\\2022\BuildTools\VC\Tools\MSVC\\14.38.33130\lib\\x64'
 # PATH ENVIRONMENT VARIABLE: 'C:\Program Files (x86)\Microsoft Visual Studio\\2022\BuildTools\VC\Tools\MSVC\\14.38.33130\\bin\Hostx64\\x64'
