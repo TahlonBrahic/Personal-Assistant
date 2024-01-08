@@ -13,7 +13,7 @@
 
 import sys, os
 
-sys.path.append('C:/Users/tahlo/Documents/Programming/Personal-Assistant')
+LOCAL_PATH = 'C:/Users/tahlo/Documents/Programming/Personal-Assistant'
 
 class SystemPath():
     def __init__(self) -> None:
@@ -34,3 +34,6 @@ class SystemPath():
         # Example of using application_path to access a resource file
         resource_file_path = os.path.join(self.application_path, 'resources', 'file.txt')
         return resource_file_path
+    
+    def append(self):
+        sys.path.append(LOCAL_PATH)
