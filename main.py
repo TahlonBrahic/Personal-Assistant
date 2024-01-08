@@ -1,7 +1,5 @@
 import sys
 from PyQt5.QtWidgets import QApplication
-
-sys.path.append('C:/Users/tahlo/Documents/Programming/Personal-Assistant')
 from personal_assistant import PersonalAssistant
 from config import SystemPath
 
