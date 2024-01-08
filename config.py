@@ -17,8 +17,8 @@ LOCAL_PATH = 'C:/Users/tahlo/Documents/Programming/Personal-Assistant'
 
 class SystemPath():
     def __init__(self) -> None:
-        self.application_path = self.find_application_path
-        self.resource_file_path =
+        self.application_path = self.find_application_path()
+        self.resource_file_path = self.find_resource_file_path()
 
     def find_application_path(self):
         if getattr(sys, 'frozen', False):

@@ -1,13 +1,15 @@
 import sys
 from PyQt5.QtWidgets import QApplication
+
+sys.path.append('C:/Users/tahlo/Documents/Programming/Personal-Assistant')
 from personal_assistant import PersonalAssistant
 from config import SystemPath
 
 def main():
     """Main function to start the voice assistant application."""
     try:
-        system_path = SystemPath()
-        system_path.append()
+        system_path = SystemPath() # Create instance of SystemPath
+        system_path.append() # Append system path so Python can find local modules   
         app = QApplication(sys.argv)  # Create instance of a QApplication
         assistant = PersonalAssistant()  # Create instance of a PersonalAssistant
         assistant.start()  # Start the voice assistant
